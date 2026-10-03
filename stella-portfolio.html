@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Garan Byun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-panel: #E7E3DA;
+    --ink: #16211E;
+    --ink-soft: #4B5A56;
+    --ink-faint: #8A968F;
+    --teal: #3D428B;
+    --teal-soft: #E7E8F3;
+    --copper: #A8672D;
+    --line: #D7DFDA;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #11201B;
+      --bg-panel: #16241F;
+      --ink: #EAF2EE;
+      --ink-soft: #ABC1B9;
+      --ink-faint: #6E847C;
+      --teal: #8E93D1;
+      --teal-soft: #1E2140;
+      --copper: #D69A5E;
+      --line: #274139;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #11201B;
+    --bg-panel: #16241F;
+    --ink: #EAF2EE;
+    --ink-soft: #ABC1B9;
+    --ink-faint: #6E847C;
+    --teal: #8E93D1;
+    --teal-soft: #1E2140;
+    --copper: #D69A5E;
+    --line: #274139;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px));
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Nav ---------- */
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .nav-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.15rem;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  nav.links {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav.links::-webkit-scrollbar { display: none; }
+
+  nav.links a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.links a:hover { color: var(--teal); border-color: var(--teal); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 64px 0 48px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .portrait {
+    width: 220px;
+    height: 220px;
+    border-radius: 6px;
+    background: linear-gradient(155deg, var(--teal-soft), var(--bg-panel));
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 3.2rem;
+    color: var(--teal);
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait span { z-index: 1; }
+  .portrait small {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+
+  h1.name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 2.6rem;
+    margin: 0 0 6px;
+    line-height: 1.1;
+  }
+  h1.name .hangul {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink-faint);
+    margin-left: 10px;
+  }
+
+  .title-line {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin: 0 0 2px;
+  }
+  .title-line.affil { margin-bottom: 20px; }
+  .title-line.affil a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--teal); }
+
+  .bio {
+    max-width: 62ch;
+    font-size: 1.02rem;
+    color: var(--ink);
+  }
+
+  .research-question {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 22px 0 0;
+    line-height: 1.5;
+  }
+
+  /* waveform divider */
+  .trace {
+    margin: 52px 0 44px;
+    height: 40px;
+  }
+  .trace svg { width: 100%; height: 100%; display: block; }
+  .trace path {
+    fill: none;
+    stroke: var(--teal);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+    animation: draw 1.6s ease-out forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trace path { animation: none; stroke-dashoffset: 0; }
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ---------- Info strip ---------- */
+  .info-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-bottom: 8px;
+  }
+
+  .info-col h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-col h3 svg { width: 16px; height: 16px; stroke: var(--copper); flex-shrink: 0; }
+
+  .info-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .info-col li {
+    font-size: 0.94rem;
+    padding: 9px 0;
+    border-top: 1px solid var(--line);
+  }
+  .info-col li:first-child { border-top: none; }
+  .info-col li .sub {
+    display: block;
+    color: var(--ink-faint);
+    font-size: 0.82rem;
+    margin-top: 2px;
+  }
+  .edit-note { color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- Sections ---------- */
+  section.block {
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 20px;
+  }
+
+  h2.section-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 0;
+  }
+
+  .section-note {
+    color: var(--ink-faint);
+    font-size: 0.9rem;
+    max-width: 32ch;
+    text-align: right;
+  }
+
+  /* Projects */
+  .projects {
+    display: grid;
+    gap: 24px;
+  }
+  .project {
+    border-left: 3px solid var(--copper);
+    padding: 14px 16px 14px 20px;
+    cursor: pointer;
+    border-radius: 0 6px 6px 0;
+    transition: background 0.15s ease;
+  }
+  .project:hover, .project:focus-visible {
+    background: var(--bg-panel);
+    outline: none;
+  }
+  .project-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .project-head svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--ink-faint);
+    flex-shrink: 0;
+    transition: transform 0.15s ease, stroke 0.15s ease;
+  }
+  .project:hover .project-head svg, .project:focus-visible .project-head svg {
+    stroke: var(--teal);
+    transform: translateX(3px);
+  }
+  .project h4 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .project p {
+    margin: 0 0 10px;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 62ch;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tags span {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 3px 9px;
+  }
+  .project:hover .tags span, .project:focus-visible .tags span {
+    background: var(--bg);
+  }
+  .project-hint {
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+    margin-top: 10px;
+  }
+
+  /* Project detail modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 12, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-box {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 82vh;
+    overflow-y: auto;
+    padding: 36px 32px 32px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    transform: translateY(8px);
+    transition: transform 0.18s ease;
+  }
+  .modal-overlay.open .modal-box { transform: translateY(0); }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    color: var(--ink-faint);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .modal-close:hover { color: var(--teal); background: var(--bg-panel); }
+  .modal-content h4 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin: 0 0 16px;
+    padding-right: 20px;
+  }
+  .modal-content p {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    margin: 0 0 14px;
+  }
+  .modal-content ul {
+    margin: 0 0 16px;
+    padding-left: 20px;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .modal-content li { margin-bottom: 6px; }
+  .modal-content .tags { margin-top: 4px; }
+
+  /* Publications */
+  .pub-filters {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    row-gap: 12px;
+    column-gap: 14px;
+    margin-bottom: 36px;
+    align-items: baseline;
+  }
+  .pub-filters .filter-label {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+  }
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .filter-pill {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 14px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .filter-pill:hover { border-color: var(--teal); }
+  .filter-pill.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+  }
+
+  .year-group { margin-bottom: 8px; }
+  .year-label {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin: 0 0 6px;
+    padding-top: 18px;
+  }
+  .year-group:first-of-type .year-label { padding-top: 0; }
+
+  .pub-list { list-style: none; margin: 0; padding: 0; }
+  .pub-list li {
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+  .pub-list li:first-child { border-top: none; }
+  .pub-item-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: baseline;
+  }
+  .pub-title { font-size: 0.98rem; }
+  .pub-title .authors { display: block; font-size: 0.88rem; color: var(--ink-soft); margin-top: 4px; }
+  .pub-title .authors b { color: var(--ink); font-weight: 600; }
+  .pub-title .venue { color: var(--ink-faint); font-size: 0.88rem; font-style: italic; display: block; margin-top: 3px; }
+  .pub-status {
+    font-size: 0.78rem;
+    color: var(--teal);
+    white-space: nowrap;
+    border: 1px solid var(--teal);
+    border-radius: 3px;
+    padding: 3px 9px;
+  }
+  .pub-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    align-items: center;
+  }
+  .pub-tags span {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--teal);
+    background: var(--teal-soft);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+  .pub-tags span.type { color: var(--copper); background: color-mix(in srgb, var(--copper) 14%, transparent); }
+  .pub-tags a.pub-link {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 3px 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .pub-tags a.pub-link:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+  .pub-tags a.pub-link svg {
+    width: 11px;
+    height: 11px;
+    stroke: currentColor;
+  }
+  .pub-empty {
+    color: var(--ink-faint);
+    font-style: italic;
+    font-size: 0.92rem;
+    padding: 12px 0;
+  }
+
+  /* Teaching */
+  .teaching p {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  /* Contact */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    align-items: center;
+  }
+  .contact-row a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .contact-row a:hover { color: var(--teal); border-color: var(--teal); }
+
+  footer {
+    padding: 32px 0 calc(48px + env(safe-area-inset-bottom, 0px));
+    color: var(--ink-faint);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .wrap { padding: 0 20px; }
+    .nav-inner { padding: 16px 20px; }
+    nav.links { gap: 18px; }
+    .hero { padding: 40px 0 32px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .portrait { width: 140px; height: 140px; font-size: 2.2rem; }
+    h1.name { font-size: 2rem; }
+    h1.name .hangul { display: block; margin-left: 0; margin-top: 4px; }
+    .info-strip { grid-template-columns: 1fr; gap: 28px; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .section-note { text-align: left; }
+    .modal-box { padding: 30px 22px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Garan Byun</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#teaching">Teaching Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+
+  <section class="hero" id="about">
+    <div class="hero-grid">
+      <div class="portrait">
+        <span>SB</span>
+        <small>your photo here</small>
+      </div>
+      <div>
+        <h1 class="name">Garan Byun<span class="hangul edit-note">(변가란)</span></h1>
+        <p class="title-line">Ph.D. Student in Bioengineering Interdisplinary Program</p>
+        <p class="title-line affil">Georgia Institute of Technology </p>
+        <p class="bio">
+          I work on wearable and implantable bioelectronics.
+          My research is mostly system-level device integration.
+        </p>
+        <p class="research-question">
+          Can bioelectronics solve
+        </p>
+      </div>
+    </div>
+
+    <div class="trace" aria-hidden="true">
+      <svg viewBox="0 0 900 40" preserveAspectRatio="none">
+        <path d="M0,20 L120,20 L145,20 L155,4 L165,36 L175,12 L185,20 L260,20 L400,20 L420,20 L430,4 L440,36 L450,12 L460,20 L540,20 L680,20 L700,20 L710,4 L720,36 L730,12 L740,20 L900,20" />
+      </svg>
+    </div>
+
+    <div class="info-strip">
+      <div class="info-col">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>Interests</h3>
+        <ul>
+          <li>Flexible Bioelectronics</li>
+          <li>Electrochemical Sensing</li>
+          <li>Circuit Board Design</li>
+        </ul>
+      </div>
+      <div class="info-col">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 20V10M4 10l4-4 4 4 4-6 4 6v10"/></svg>Education</h3>
+        <ul>
+          <li>Georgia Institute of Technology<span class="sub">Ph.D. Student, Bioengineering — exp. 2028</span></li>
+          <li>Georgia Institute of Technology<span class="sub">M.S. in Electrical and Computer Engineering — 2026</span></li>
+          <li>Hanyang University<span class="sub">B.S. in Electrical Engineering — 2024</span></li>
+        </ul>
+      </div>
+      <div class="info-col">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 01-10 0V4z"/><path d="M7 5H4a3 3 0 003 3M17 5h3a3 3 0 01-3 3"/></svg>Recognition</h3>
+        <ul>
+          <li class="edit-note">Add awards, fellowships, or funding here</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="publications">
+    <div class="section-head">
+      <h2 class="section-title">Publications</h2>
+    </div>
+
+    <div class="pub-filters">
+      <span class="filter-label">Topic</span>
+      <div class="filter-row" data-group="topic">
+        <button class="filter-pill" data-tag="wearables">Wearable Device</button>
+        <button class="filter-pill" data-tag="implantables">Implantable Device</button>
+        <button class="filter-pill" data-tag="review">Review</button>
+        <button class="filter-pill" data-tag="others">Others</button>
+      </div>
+      <span class="filter-label">Type</span>
+      <div class="filter-row" data-group="type">
+        <button class="filter-pill" data-tag="journal">Journal</button>
+        <button class="filter-pill" data-tag="conference">Conference</button>
+        <button class="filter-pill" data-tag="preprint">Preprint</button>
+      </div>
+    </div>
+
+    <div id="pub-groups">
+
+      <div class="year-group" data-year="2026">
+        <h3 class="year-label">2026</h3>
+        <ul class="pub-list">
+          <li class="pub-item" data-tags="review journal">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                Implantable bioelectronic closed-loop system for neural, cardiovascular, and metabolic management
+                <span class="authors"><b>Garan Byun</b>， Allison Bateman, Emily Chu, Woon-Hong Yeo*</span>
+                <span class="venue">ACS Digital Medicine Engineering</span>
+              </div>
+              <div class="pub-status">In Progress</div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Review</span>
+              <span class="type">Journal</span>
+            </div>
+          </li>
+          <li class="pub-item" data-tags="wearables implantables journal">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                An in-body networking system for communication between wearable and implantable therapeutics
+                <span class="authors">Ramy Ghanim†, Yoon Jae Lee†, <b>Garan Byun</b>, Joy Jackson, Julia Z. Ding, Jihoon Park, Markella Bibidakis, Elaine Feller, Eugene Kim, Dilay Aygun, Anika Kaushik, Alaz Cig, Sean Healy, Camille E. Cunin, Aristide Gumyusenge, Woon-Hong Yeo*, Alex Abramson*</span>
+                <span class="venue">Science</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Wearable Device</span>
+              <span class="topic">Implantable Device</span>
+              <span class="type">Journal</span>
+              <a class="pub-link" href="https://www.science.org/doi/10.1126/science.adz5300" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                View paper
+              </a>
+            </div>
+          </li>
+          <li class="pub-item" data-tags="review journal">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                Advances in safe, flexible, and stretchable batteries for wearable applications
+                <span class="authors">Hyewon Kang, <b>Garan Byun</b>, Seunghyeb Ban, Yunuo Huang, Woon-Hong Yeo*</span>
+                <span class="venue">Advanced Materials Technologies</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Review</span>
+              <span class="type">Journal</span>
+              <a class="pub-link" href="https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/admt.202502563" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                View paper
+              </a>
+            </div>
+          </li>
+          <li class="pub-item" data-tags="implantables journal">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                Nanomembrane Sensor-Integrated Central Venous Catheter for Continuous Monitoring of Electrolytes in Blood Serum
+                <span class="authors">Ka Ram Kim✝, <b>Garan Byun✝</b>, Jimin Lee, Jihee Min, Masha Dadjou, Janice Newsome, Zachary Bercu, Hanzhou Li*, John T. Moon*, Woon-Hong Yeo*</span>
+                <span class="venue">Biosensors &amp; Bioelectronics: X</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Implantable Device</span>
+              <span class="type">Journal</span>
+              <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S2590137026000014" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                View paper
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="year-group" data-year="2025">
+        <h3 class="year-label">2025</h3>
+        <ul class="pub-list">
+          <li class="pub-item" data-tags="implantables journal">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                Wireless, battery-free self-detecting smart arteriovenous graft for stenosis diagnosis in dialysis patients
+                <span class="authors">Allison Bateman, <b>Garan Byun</b>, Saewoong Oh, Robert Herbert, Marisa Perera, Jimin Lee, Karam Kim, Yunuo Huang, Bruno Rigo, Matthew Guess, Janice Newsome, Zachary Bercu, Victoria Teodorescu, Hanzhou Li*, John T. Moon*, Woon-Hong Yeo*</span>
+                <span class="venue">Biosensors &amp; Bioelectronics</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Implantable Device</span>
+              <span class="type">Journal</span>
+              <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S0956566325009650" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                View paper
+              </a>
+            </div>
+          </li>
+          <li class="pub-item" data-tags="wearables implantables preprint">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                An artificial nervous system for communication between wearable and implantable therapeutics
+                <span class="authors">Ramy Ghanim✝, Yoon Jae Lee✝, <b>Garan Byun</b>, Joy Jackson, Julia Z Ding, Elaine Feller, Eugene Kim, Dilay Aygun, Anika Kaushik, Alaz Cig, Jihoon Park, Sean Healy, Camille E Cunin, Aristide Gumyusenge, Woon-Hong Yeo*, Alex Abramson*</span>
+                <span class="venue">bioRxiv</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Wearable Device</span>
+              <span class="topic">Implantable Device</span>
+              <span class="type">Preprint</span>
+              <a class="pub-link" href="https://www.biorxiv.org/content/10.1101/2025.06.04.657863v2" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                View paper
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="year-group" data-year="2024">
+        <h3 class="year-label">2024</h3>
+        <ul class="pub-list">
+          <li class="pub-item" data-tags="others journal">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                Flexible and transparent electrovibration-based haptic display with low driving voltage
+                <span class="authors">Beomhee Park✝, Eunsuk Choi✝, <b>Garan Byun</b>, Geonoh Choe, Seong Woo Hong, Hyeonji Yang, Jaeman Lim, Seung-Beck Lee, Yei Hwan Jung*</span>
+                <span class="venue">ACS Applied Materials &amp; Interfaces</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Others</span>
+              <span class="type">Journal</span>
+              <a class="pub-link" href="https://pubs.acs.org/aamick/article-abstract/16/41/55864/139889/Flexible-and-Transparent-Electrovibration-Based?redirectedFrom=fulltext" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                View paper
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="year-group" data-year="2023">
+        <h3 class="year-label">2023</h3>
+        <ul class="pub-list">
+          <li class="pub-item" data-tags="review journal">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                Advances in ultrathin soft sensors, integrated materials, and manufacturing technologies for enhanced monitoring of human physiological signals
+                <span class="authors">Hodam Kim✝, Yoon Jae Lee✝, <b>Garan Byun</b>, Chanyoung Choi, Woon‐Hong Yeo*</span>
+                <span class="venue">Advanced Electronic Materials</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Review</span>
+              <span class="type">Journal</span>
+              <a class="pub-link" href="https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/aelm.202201294" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                View paper
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="year-group" data-year="2022">
+        <h3 class="year-label">2022</h3>
+        <ul class="pub-list">
+          <li class="pub-item" data-tags="implantables conference">
+            <div class="pub-item-head">
+              <div class="pub-title">
+                주파수 변조 기술을 이용한 MCU 기반 무선 전류 자극기
+                <span class="authors">이준혁， <b>변가란</b>， 배지민， 김지원， 이재호， 문지영， 이초림， 이병훈</span>
+                <span class="venue">대한전기학회</span>
+              </div>
+            </div>
+            <div class="pub-tags">
+              <span class="topic">Implantable Device</span>
+              <span class="type">Conference</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="pub-empty" id="pub-empty" style="display:none;">No publications match the selected filters.</p>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="section-head">
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects">
+
+      <div class="project" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-head">
+          <h4>Embedded Firmware &amp; PCB Design</h4>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+        <p>Firmware for the nRF52832 integrating TMP117 and MAX30101 sensors, developed
+        and debugged in NCS/Zephyr, alongside PCB designs pairing the nRF52832 with an
+        IMU and LDO regulator for the lab's wearable devices.</p>
+        <div class="tags"><span>nRF52832</span><span>Zephyr RTOS</span><span>Altium</span><span>I2C / BLE</span></div>
+        <div class="project-hint">Click for details</div>
+        <div class="project-detail" hidden>
+          <h4>Embedded Firmware &amp; PCB Design</h4>
+          <p>Firmware for the nRF52832 integrating TMP117 and MAX30101 sensors, fully
+          developed and debugged in NCS/Zephyr.</p>
+          <ul>
+            <li>Resolved hardware bring-up issues, including I2C pin conflicts and MAX30101 WSON soldering shorts</li>
+            <li>PCB design in Altium pairing the nRF52832 with an IMU (ICM-40609-D) and LDO regulator (S-1318A33)</li>
+            <li>Contributing role on a BLE-based ECG system</li>
+          </ul>
+          <div class="tags"><span>nRF52832</span><span>Zephyr RTOS</span><span>Altium</span><span>I2C / BLE</span></div>
+        </div>
+      </div>
+
+      <div class="project" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="project-head">
+          <h4>Smart Wireless Artifical Network System </h4>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+        <p>Goal: Use inbody communication to control multiple implant with a wearable.</p>
+        <div class="tags"><span>Wearable</span><span>Implantable</span><span>In vivo</span></div>
+        <div class="project-hint">Click for details</div>
+        <div class="project-detail" hidden>
+          <h4>Smart Wireless Artifical Network System</h4>
+          <p>Goal: Use inbody communication to control multiple implant with a wearable.</p>
+          <ul>
+            <li>Exploring NIRS, EDA, and bioimpedance as candidate sensing modalities</li>
+            <li>Early-stage — modality selection and sensor architecture still open</li>
+          </ul>
+          <div class="tags"><span>Wearable</span><span>Implantable</span><span>In vivo</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="block teaching" id="teaching">
+    <div class="section-head">
+      <h2 class="section-title">Teaching</h2>
+    </div>
+    <p>Mentoring someone to spread the knowledge is also very important.</p>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="section-head">
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-row">
+      <a href="mailto:gbyun7@gatech.edu">E-mail</a>
+      <a href="https://scholar.google.com/citations?user=qzM1SV8AAAAJ&hl=en">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/garan-byun-810b42273/">LinkedIn</a>
+    </div>
+  </section>
+
+</div>
+
+<div class="modal-overlay" id="project-modal">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-content">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-content" id="modal-content"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">Garan Byun · Ph.D. Student, Georgia Institute of Technology</div>
+</footer>
+
+<script>
+  (function () {
+    // Publications filtering
+    var pills = Array.from(document.querySelectorAll('.filter-pill'));
+    var pubItems = Array.from(document.querySelectorAll('.pub-item'));
+    var yearGroups = Array.from(document.querySelectorAll('.year-group'));
+    var emptyMsg = document.getElementById('pub-empty');
+
+    function activeTags() {
+      return pills.filter(function (p) { return p.classList.contains('active'); })
+                  .map(function (p) { return p.dataset.tag; });
+    }
+
+    function applyFilters() {
+      var active = activeTags();
+      var anyVisible = false;
+
+      pubItems.forEach(function (item) {
+        var tags = item.dataset.tags.split(' ');
+        var show = active.length === 0 || active.every(function (t) { return tags.indexOf(t) !== -1; });
+        item.style.display = show ? '' : 'none';
+        if (show) anyVisible = true;
+      });
+
+      yearGroups.forEach(function (group) {
+        var visibleInGroup = Array.from(group.querySelectorAll('.pub-item'))
+          .some(function (item) { return item.style.display !== 'none'; });
+        group.style.display = visibleInGroup ? '' : 'none';
+      });
+
+      emptyMsg.style.display = anyVisible ? 'none' : '';
+    }
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        pill.classList.toggle('active');
+        applyFilters();
+      });
+    });
+
+    // Project detail modal
+    var overlay = document.getElementById('project-modal');
+    var modalContent = document.getElementById('modal-content');
+    var closeBtn = document.getElementById('modal-close');
+    var cards = Array.from(document.querySelectorAll('.project'));
+
+    function openModal(card) {
+      var detail = card.querySelector('.project-detail');
+      modalContent.innerHTML = detail ? detail.innerHTML : card.innerHTML;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () { openModal(card); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+  })();
+</script>
+
+</body>
+</html>
