@@ -541,10 +541,64 @@
   }
 
   /* Teaching */
-  .teaching p {
-    max-width: 62ch;
+  .teaching-list {
+    display: grid;
+    gap: 34px;
+  }
+
+  .teaching-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 26px;
+    align-items: start;
+  }
+
+  .teaching-date {
+    color: var(--ink-faint);
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+
+  .teaching-content {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .teaching-item:last-child .teaching-content {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .teaching-content h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 3px;
+  }
+
+  .teaching-meta {
+    margin: 0 0 10px;
+    color: var(--teal);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .teaching-content ul {
+    margin: 0;
+    padding-left: 19px;
     color: var(--ink-soft);
-    font-size: 0.98rem;
+    font-size: 0.95rem;
+    max-width: 68ch;
+  }
+
+  .teaching-content li {
+    margin-bottom: 6px;
+  }
+
+  .teaching-content li:last-child {
+    margin-bottom: 0;
   }
 
   /* Contact */
@@ -584,6 +638,8 @@
     .info-strip { grid-template-columns: 1fr; gap: 28px; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 8px; }
     .section-note { text-align: left; }
+    .teaching-item { grid-template-columns: 1fr; gap: 6px; }
+    .teaching-date { padding-top: 0; }
     .modal-box { padding: 30px 22px 26px; }
   }
 </style>
@@ -916,9 +972,47 @@
 
   <section class="block teaching" id="teaching">
     <div class="section-head">
-      <h2 class="section-title">Teaching</h2>
+      <h2 class="section-title">Teaching &amp; Mentoring</h2>
+      <span class="section-note">Research mentorship, laboratory instruction, and student training.</span>
     </div>
-    <p>TBD...</p>
+
+    <div class="teaching-list">
+      <article class="teaching-item">
+        <div class="teaching-date">2024 &ndash; Present</div>
+        <div class="teaching-content">
+          <h3>VIP Mentor</h3>
+          <p class="teaching-meta">VIP3601 &middot; BMED4699 &middot; ME2699 &middot; ME4699</p>
+          <ul>
+            <li>Mentor 1&ndash;2 undergraduate students per semester in the Vertically Integrated Projects (VIP) program, providing guidance on research progress, experimental skills, and professional development.</li>
+            <li>Coordinate a lab-wide undergraduate research program involving approximately 20 students, supporting student learning, research engagement, and continued participation in the lab.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="teaching-item">
+        <div class="teaching-date">2026</div>
+        <div class="teaching-content">
+          <h3>Research Mentor</h3>
+          <p class="teaching-meta">Summer Research Internship &middot; WISH Center</p>
+          <ul>
+            <li>Mentored a high school student in a summer research program, providing guidance on experimental design, laboratory techniques, and data analysis.</li>
+            <li>Guided the student in interpreting experimental results and preparing research findings presented at the BMES 2026 High School Session.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="teaching-item">
+        <div class="teaching-date">2025 &ndash; 2026</div>
+        <div class="teaching-content">
+          <h3>Guest Lab Instructor</h3>
+          <p class="teaching-meta">ME6229</p>
+          <ul>
+            <li>Led six laboratory sessions, providing instruction on experimental procedures, equipment operation, and relevant course concepts.</li>
+            <li>Guided students in troubleshooting experiments, operating laboratory equipment, and interpreting experimental results during hands-on laboratory activities.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
   </section>
 
   <section class="block" id="contact">
